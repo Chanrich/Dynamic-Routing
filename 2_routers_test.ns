@@ -1,0 +1,24 @@
+set ns [new Simulator]
+source tb_compat.tcl
+# Nodes
+set r1 [$ns node]
+tb-set-node-os $r1 Ubuntu1004-STD
+set r2 [$ns node]
+tb-set-node-os $r2 Ubuntu1004-STD
+set n6 [$ns node]
+tb-set-node-os $n6 Ubuntu1004-STD
+set n4 [$ns node]
+tb-set-node-os $n4 Ubuntu1004-STD
+set n5 [$ns node]
+tb-set-node-os $n5 Ubuntu1004-STD
+
+set link0 [$ns duplex-link $n4 $r1 1000000.0kb 0ms DropTail]
+set link1 [$ns duplex-link $n5 $r1 1000000.0kb 0ms DropTail]
+
+
+set link6 [$ns duplex-link $r2 $r1 1000000.0kb 0ms DropTail]
+set link7 [$ns duplex-link $n6 $r2 1000000.0kb 0ms DropTail]
+
+
+$ns rtproto Manual
+$ns run
